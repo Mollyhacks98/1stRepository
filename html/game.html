@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dice Game</title>
+    <link rel="stylesheet" href="main.css"> 
+    <!-- add in the css file created in Assignment 2.1 -->
+     <!-- I spent alot of time on the way my game looked after i got it to work -->
+      <style> 
+body { 
+    /* font style */
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    background-color:ivory;
+    color: blueviolet;
+    margin: 0;
+    padding: 0;
+
+}
+header { 
+    /* adds spacing below the header */
+    margin-bottom:20px;
+
+}
+/* dice images */
+.dice-container { 
+    margin: 20px 0;
+
+} 
+/* Dice shake animation */
+.shake { 
+    animation: shake 0.6s; 
+}
+
+@keyframes shake { 
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+/* my button, i wanted it to look like an actual button */
+button { 
+    padding: 10px 20px;
+    font-size: 18px;
+    margin: 10px;
+    border-radius: 5px;
+    background: linear-gradient(135deg, #7e57c2, #5c6bc0);
+    color: white;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+    button:hover { 
+        transform: scale(1.05);
+        background: linear-gradient(135deg, #5c6bc0, #7e57c2); 
+    
+    }
+/* dice image */
+img { 
+    width: 100px; 
+    height: 100px; 
+    object-fit: contain;
+    margin: 10px; 
+}
+/* how the results look */
+#result { 
+    font-size: 20px;
+    margin-top: 20px; 
+    color:chartreuse;
+}
+
+ </style>
+</head>
+<body>
+        <!-- Create a header section, there should only be one h1 tag -->
+<header>
+    <h1>Do YoU WaNt To PlAy A gAme?.</h1>
+    <p>Roll two 20-sided dice and see if you win!</p>
+    <!--  there will be spacing before and after the P  -->
+      <!-- adding a scoreboard -->
+ <div id="scoreboard"> 
+    wins: <span id="wins"></span> | Losses: <span id="losses"></span>
+<!-- making the dice visible -->
+    <div class="dice-container">
+        <img id="die1Image" src="d20-1.png" alt="Die 1" width="100"> 
+        <img id="die2Image" src="d20-2.png" alt="Die 2" width="100">
+        </div>
+      <!-- add a link to our css file -->
+       
+       <link rel="stylesheet" href="main.css">
+       <nav>
+            <!-- the a tag is the anchor tag-it creates a hyperlink -->
+            <a href="index.html">Home</a> &nbsp;
+            <br>
+            <a href="boards.html">About</a> &nbsp;
+            <br>
+            <a href="game.html">Game</a> &nbsp;
+       </nav>
+</header>  
+
+
+<!-- ADD A BUTTON SO THE USER CAN START PLAYING -->
+ <button onclick="PlayDiceGame()">PlayDiceGame</button>
+<!-- add footer to the bottom of the page --> 
+<div id="result"></div>
+<!-- JavaScript code goes between our script tags; dont use HTML tags or css styles directly in JavaScript Code -->
+
+    <script>
+    // single line comment
+    /* multiline comment */ 
+    //this function will allow us to play our game
+     // update scoreboard
+        let wins =0;
+        let losses = 0;
+    function PlayDiceGame() {
+        console.log("PlayDiceGame function called");
+    
+       //ypu can display helpful messages to the console to track whats going on in the porgram
+        
+
+
+
+        // set up 2 variables to hold the 2 dice rolls that my game needs to do 
+        let die1 = Math.floor(Math.random() * 20) + 1; // 1-20
+        let die2 = Math.floor(Math.random() * 20) + 1; // 1-20
+        let total = die1 + die2;
+
+      let message = `You rolled: ${die1} and ${die2} (Total = ${total})<br>`  
+//   Game Rules (i feel like i made my game too hard, but its fine)
+    // if the user rolls a 1 or a 20, they win or lose instantly
+    // if the total is 30 or more, they win
+    // if the user rolls doubles, they win instantly
+    // if the total is less than 10, they lose
+    // if the total is between 10 and 30, they neither win nor lose
+ 
+ if (die1 === 1 || die2 ===1) { 
+    message +="CRITICAL FAIL! YOU LOSE!.";
+    } else if (die1 ===20 || die2 ===20) { 
+        message += "AWESOMESAUCE! YOU WON!!"; 
+    } else if (total >= 30) { 
+        message += "You win! Your total is high enough!"; 
+    } else if ( die1=== die2) { 
+        message += "SNake Eyes!"; 
+} else if (total < 10) { 
+    message += "Not quite enough. Try again!.";
+} else if (total >= 10 && total < 30) { 
+    message += "Not enough to win, but you also didnt lose, so meh" 
+}
+    document.getElementById("result").innerHTML = message; 
+// update the result div with the message
+        // update the images to show the dice rolled
+        document.getElementById("die1Image").src = `d20-${die1}.png`;
+        document.getElementById("die2Image").src = `d20-${die2}.png`;
+        
+        // add a class to the images to trigger the shake animation
+        let die1Image = document.getElementById("die1Image");
+        let die2Image = document.getElementById("die2Image");
+
+        die1Image.classList.add("shake");
+        die2Image.classList.add("shake");
+        // remove the shake class after the animation ends
+        setTimeout(() => {
+            die1Image.classList.remove("shake");
+            die2Image.classList.remove("shake");
+        }, 600); // match the duration of the animation
+
+        die1Image.src = `d20-${die1}.png`;
+        die2Image.src = `d20-${die2}.png`;
+
+       
+
+if (die1 === 1 || die2 === 1 || total < 10) {
+            losses++;
+        } else if (die1 === 20 || die2 === 20 || total >= 30 || die1 === die2) {
+            wins++;
+        }
+
+        document.getElementById("wins").innerText = wins;
+        document.getElementById("losses").innerText = losses;
+// update dice faces
+die1Image.src = `d20-${die1}.png`;
+        die2Image.src = `d20-${die2}.png`;
+    
+
+
+    // function to simulate the rolling of a 20-sided die
+    function rolldie() {
+        // multiply random number between 0 and 1 by 20 so i get my random dice roll 
+        return Math.ceil(Math.random() * 20);
+    }
+}
+</script>
+
+
+<footer>
+    <!-- <br> creates a new line -->
+    Molly Jewett<br>
+    University of Advancing Technology<br>
+    2625 W baseline Rd.<br> 
+    Tempe, Az 85283<br> 
+
+
+ </footer>
+
+</body>
+</html>
