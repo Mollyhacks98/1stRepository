@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mollys Log In Page</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <!-- TODO: add header with menu here -->
+     <main> 
+        <div class="login-container">
+            
+        <h2> Please Login to View a Message</h2>
+
+        <div id="divMessage" ></div>
+        <form method="post" onsubmit="return validateForm()">
+            <label for="txtFirstName">First Name:</label>
+             <input type="text" id="txtFirstName" name="txtFirstName" >
+             <br><br>
+             <label for="txtLastName">Last Name:</label>
+                <input type="text" id="txtLastName" name="txtLastName" >
+                <br><br>
+                <label for="txtzip">Zip Code:</label>
+                <input type="text" id="txtzip" name="txtzip" >
+                <br><br>
+                <input type="submit" value="Submit inputs">
+                </form>
+                </div>
+     </main>
+     <!-- Move his Java script to a new file -->
+        <script>
+            function validateForm() {
+                // create a shortcut/nickname for the first name that the user entered 
+                let firstName = document.getElementById("txtFirstName").value; 
+                // create a shortcut/nickname for the last name that the user entered
+                let lastName = document.getElementById("txtLastName").value;
+                // create a shortcut/nickname for the zip code that the user entered
+                let zip = document.getElementById("txtzip").value;
+
+                console.log("firstName: " + firstName);
+                console.log("lastName: " + lastName);
+                console.log("Zip Code: " + zip); 
+
+                // CREATE A NEW VARIABLE TO HOLD BOTH THE FIRST AND LAST NAME 
+                let fullName = firstName + " " + lastName;
+
+                console.log("fullName="  + fullName);
+                //  create a shortcut to the message area 
+                let divMessage = document.getElementById("divMessage");
+
+//  i created the error ,essage for if the fullname has either 1 character (" ") or more than 20 
+                if (fullName.length == 1 || fullName.length > 20) {
+                    //  the user gets notiified of the eror but doesnt get the message
+                    divMessage.innerHTML = "Invalid name. Please try again."; 
+
+
+                }
+                // If its not 5 digits long its not a zipcode
+                else if  (zip.length != 5){ 
+                    divMessage.innerHTML = "Invalid zip code. Please try again.";
+
+                }
+                // If we get to this else statement, it means all of the inputs validated successfully!
+                else { 
+                    // The inputs validated successfully 
+                    divMessage.innerHTML = "Welcome," + fullName + "!The Secret word is validation!"; 
+                             }
+
+
+                // This will prevent the form from submitting to server side code that we dont have in this class
+                return false; 
+            }
+        </script>
+</body>
+</html>

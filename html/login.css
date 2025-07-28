@@ -1,0 +1,92 @@
+/*
+declaration block::
+
+selector{
+    property: value;
+    property2: value;
+}
+*/
+
+
+body{
+    background-color:darkcyan;
+    color:#333;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #8e44ad, #3498db);
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+
+}
+
+.login-container {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    width: 300px;
+}
+h2{ 
+    margin-bottom: 10px;
+    color: #4a148c;
+
+}
+nav{
+    height: 600px;
+    width: 200px;float: left;
+    padding: spx;
+    line-height:30px;
+}
+
+
+footer{
+    text-align: center;
+    margin-right: 200px; 
+}
+
+
+#memeimage{
+    margin-right: 200px;
+    width: 400px;
+    text-align: center;
+}
+
+h1{
+    text-align: center
+}
+
+label { 
+    display: block;
+    font-weight: bold;
+    margin: 10px 0 5px;
+}
+input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+} 
+
+input[type="submit"] {
+    margin-top: 15px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background: #8e44ad;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+input[type="submit"]:hover {
+    background: #5e3370;
+}
+#divMessage {
+    margin: 10px 0;
+    font-weight: bold;
+}
+
+
