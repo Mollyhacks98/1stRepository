@@ -1,4 +1,4 @@
-<!-- Document type for browser -->
+<!DOCTYPE html>
  <!-- Molly Jewett 07/13/2025 
 <!DOCTYPE html>
 <!-- language -->
@@ -8,7 +8,11 @@
     <!-- this part is for mobile devices -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- this title will appear in the browser tab -->
-    <title>Document</title>
+
+    <!-- add a link to our css file -->
+       <link rel="stylesheet" href="main.css">
+       </head>
+<Body>
     <header>
         <!-- this is the navigation menu section -->
 
@@ -21,15 +25,20 @@
         </nav>
 
     </header>
-</head>
+
 <!-- everything we want the viewer to see goes here -->
-<body>
+
     <!-- Create a header section, there should only be one h1 tag -->
 
     <h1>Welcome to my CSC102 Page.</h1>
     <!--  there will be spacing before and after the P  -->
-      <!-- add a link to our css file -->
-       <link rel="stylesheet" href="main.css">
+      
+
+       <!-- this is what moves the image around -->
+
+       <button id="btnStart" onclick="StartMove()" >Start Image Moving</button>
+         <button id="btnStop" onclick="StopMove()" >Stop Image Moving</button>
+
 <p>
 <img id="memeimage" src="meme.png" alt="meme image">  
 </p>
@@ -44,5 +53,9 @@
 
  </footer>
  <!-- make sure the closing body tag is at the bottom of the ppage -->
+
+ <!-- Move this Javascript to a seperate page -->
+
+ <script src="indexbutton.js"></script>
 </body>
 </html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Practice</title>
+    <link rel="stylesheet" href="event_practice.css">
+</head>
+<body>
+    <header> 
+        <h1>Event Handling Practice </h1>
+    </header>
+
+    <main> 
+        <h2> Button Click event handling</h2>
+        <p> Generate some random numbers and check if they are even or odd</p>
+        <button onclick="generateNums();">Click Me</button> 
+        <div  id="divOutput" ></div>
+    </main>
+
+    <!-- TODO: Move this Javascript to a new file -->
+     <Script> 
+        // create function to generate some random numbers and check if they are even or odd
+        function generateNums() {
+
+            document.getElementById("dicOutput").innerHTML = ""; 
+            //  generate 5 random numbers 
+            for(let counter = 0; counter < 5; counter++) {
+                // generate a random numbeer 
+                let randNum = (Math.floor() * 100) + 1;
+
+                console.log("Random num=" + randomNum); 
+
+                let result = (randomNum % 2 === 0) ? "even" : "odd"; 
+                //  if this statement is true, it means we have divided our randmom number by 2 and tthe remainder was 0 so this is an even number 
+
+                document.getElementById("divOutput").innerHTML += 
+                    "<br> Random Number: " + randomNum + " is " + result; 
+
+
+
+
+            }
+        }
+     </Script>
+</body>
+</html>
