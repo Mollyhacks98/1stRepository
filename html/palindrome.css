@@ -1,0 +1,214 @@
+
+/* palindrome.css
+   Modern, accessible styles for a palindrome checker
+   - Responsive card layout
+   - Clear focus states
+   - Result states: success / fail / neutral
+   - Subtle animations for feedback
+*/
+
+/* ========== Theme variables ========== */
+:root{
+  --bg: #0f1724;
+  --card: #0b1220;
+  --muted: #9aa4b2;
+  --accent: #7dd3fc;      /* bright cyan */
+  --accent-2: #c084fc;    /* soft purple */
+  --success: #4ade80;
+  --danger: #fb7185;
+  --glass: rgba(255,255,255,0.04);
+  --radius: 14px;
+  --gap: 1rem;
+  --transition: 200ms cubic-bezier(.2,.9,.2,1);
+  --max-width: 700px;
+  --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", monospace;
+  --ui-font: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+/* Light theme override (optional)
+   Add class .light-theme on body to flip quickly.
+*/
+body.light-theme{
+  --bg: #f6fbff;
+  --card: #ffffff;
+  --muted: #56707a;
+  --accent: #0ea5e9;
+  --accent-2: #7c3aed;
+  --glass: rgba(15,23,36,0.04);
+}
+
+/* ========== Base layout ========== */
+html,body{
+  height:100%;
+  margin:0;
+  font-family:var(--ui-font);
+  background: linear-gradient(180deg, var(--bg) 0%, color-mix(in srgb, var(--bg) 55%, #071021 45%));
+  color: #e6eef6;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:2rem;
+  box-sizing:border-box;
+}
+
+/* Container card */
+.pal-card{
+  width:100%;
+  max-width:var(--max-width);
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.00));
+  border-radius:var(--radius);
+  padding:1.25rem;
+  box-shadow: 0 6px 30px rgba(2,6,23,0.6), inset 0 1px 0 rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.04);
+  backdrop-filter: blur(6px) saturate(1.05);
+}
+
+/* Header */
+.pal-header{
+  display:flex;
+  gap:0.75rem;
+  align-items:center;
+  margin-bottom:0.75rem;
+}
+.pal-title{
+  font-size:1.125rem;
+  font-weight:700;
+  letter-spacing: -0.02em;
+}
+.pal-sub{
+  color:var(--muted);
+  font-size:0.9rem;
+  margin-left:auto;
+}
+
+/* Input area */
+.pal-form{
+  display:flex;
+  gap:var(--gap);
+  align-items:center;
+  flex-wrap:wrap;
+}
+.pal-input{
+  flex:1 1 320px;
+  min-width:200px;
+  padding:0.85rem 1rem;
+  font-size:1rem;
+  border-radius:10px;
+  border:1px solid rgba(255,255,255,0.06);
+  background: linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0.01));
+  color:inherit;
+  outline: none;
+  transition: box-shadow var(--transition), transform var(--transition), border-color var(--transition);
+  box-shadow: 0 2px 10px rgba(2,6,23,0.35);
+}
+
+/* input focus for keyboard users */
+.pal-input:focus{
+  border-color: color-mix(in srgb, var(--accent) 70%, white 30%);
+  box-shadow: 0 6px 30px color-mix(in srgb, var(--accent) 12%, black 88%);
+  transform: translateY(-1px);
+}
+
+/* Buttons */
+.pal-btn{
+  padding:0.75rem 1rem;
+  border-radius:10px;
+  border:none;
+  cursor:pointer;
+  font-weight:600;
+  font-size:0.95rem;
+  transition: transform var(--transition), box-shadow var(--transition), opacity var(--transition);
+  box-shadow: 0 6px 18px rgba(2,6,23,0.45);
+  background: linear-gradient(180deg, var(--accent), color-mix(in srgb, var(--accent-2) 35%, var(--accent) 65%));
+  color:#042029;
+  min-width:120px;
+}
+.pal-btn:hover{ transform: translateY(-2px); }
+.pal-btn:active{ transform: translateY(0); }
+
+/* Disabled button */
+.pal-btn[disabled]{
+  opacity:0.45;
+  cursor:not-allowed;
+  transform:none;
+  box-shadow:none;
+}
+
+/* Secondary button (clear) */
+.pal-btn.secondary{
+  background: transparent;
+  color:var(--muted);
+  border:1px solid rgba(255,255,255,0.04);
+  box-shadow:none;
+}
+.pal-btn.secondary:hover{ color:var(--accent); }
+
+/* Results area */
+.pal-result{
+  margin-top:1rem;
+  padding:0.85rem 1rem;
+  border-radius:10px;
+  display:flex;
+  align-items:center;
+  gap:0.75rem;
+  min-height:48px;
+  transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+  background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
+  border:1px solid rgba(255,255,255,0.03);
+}
+.pal-result .emoji{
+  font-size:1.5rem;
+  line-height:1;
+}
+.pal-result .text{
+  font-size:0.98rem;
+  font-weight:600;
+  letter-spacing:-0.01em;
+}
+
+/* success / fail / neutral states */
+.pal-result.success{
+  background: linear-gradient(90deg, rgba(74,222,128,0.08), rgba(125,211,252,0.03));
+  border-color: color-mix(in srgb, var(--success) 28%, rgba(255,255,255,0.06));
+  box-shadow: 0 8px 30px rgba(74,222,128,0.06);
+  color: var(--success);
+}
+.pal-result.fail{
+  background: linear-gradient(90deg, rgba(251,113,133,0.06), rgba(255,255,255,0.00));
+  border-color: color-mix(in srgb, var(--danger) 32%, rgba(255,255,255,0.06));
+  box-shadow: 0 8px 30px rgba(251,113,133,0.05);
+  color: var(--danger);
+}
+.pal-result.neutral{
+  color: var(--muted);
+}
+
+/* Display the normalized palindrome text in monospace */
+.pal-normalized{
+  display:block;
+  margin-top:0.5rem;
+  font-family: var(--mono);
+  font-size:0.9rem;
+  color: color-mix(in srgb, var(--muted) 70%, white 30%);
+  word-break:break-word;
+  opacity:0.95;
+}
+
+/* small helper line for tips */
+.pal-hint{
+  margin-top:0.75rem;
+  color:var(--muted);
+  font-size:0.85rem;
+  display:flex;
+  gap:0.5rem;
+  align-items:center;
+}
+
+/* Responsive tweaks */
+@media (max-width:560px){
+  .pal-form{ flex-direction:column; align-items:stretch; }
+  .pal-btn{ width:100%; min-width:0; }
+  .pal-sub{ display:none; }
+}
