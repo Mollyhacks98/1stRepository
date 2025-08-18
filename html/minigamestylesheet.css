@@ -1,0 +1,128 @@
+/* General Page Setup */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #fbeaff, #e4f9f5, #fff7e6);
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  color: #444;
+}
+
+/* Section Boxes */
+.section {
+  margin: 40px auto;
+  padding: 30px;
+  width: 420px;
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s ease-in-out;
+}
+
+.section:hover {
+  transform: scale(1.02);
+}
+
+/* Headings */
+h2, h3 {
+  color: #6a5acd;
+  margin-bottom: 15px;
+}
+
+/* Inputs */
+input[type="text"],
+input[type="number"],
+input[type="password"] {
+  width: 80%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 2px solid #e0d7ec;
+  border-radius: 10px;
+  background: #fafafa;
+  outline: none;
+  font-size: 14px;
+  transition: border 0.3s;
+}
+
+input:focus {
+  border-color: #b19cd9;
+}
+
+/* Buttons */
+button {
+  padding: 12px 25px;
+  margin: 10px;
+  border: none;
+  border-radius: 12px;
+  background: #b19cd9;
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: background 0.3s, transform 0.2s;
+}
+
+button:hover {
+  background: #a080d6;
+  transform: translateY(-3px);
+}
+
+/* Messages */
+#loginMessage, #battleLog {
+  margin-top: 15px;
+  padding: 10px;
+  border-radius: 10px;
+  background: #f4f0ff;
+  font-style: italic;
+  min-height: 20px;
+}
+
+/* Stats Display */
+#heroStats, #enemyStats {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 8px 0;
+  padding: 8px;
+  border-radius: 8px;
+}
+
+#heroStats {
+  background: #e6f7ff;
+  color: #005f73;
+}
+
+#enemyStats {
+  background: #ffe6e6;
+  color: #9b2226;
+}
+
+/* Responsive Design */
+@media (max-width: 500px) {
+  .section {
+    width: 90%;
+    padding: 20px;
+  }
+
+  button {
+    width: 80%;
+  }
+
+  input {
+    width: 90%;
+  }
+}
+#heroImage, #enemyImage {
+  border-radius: 15px;
+  margin: 15px 0;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+}
+.gameDescription {
+  font-size: 1rem;
+  margin-bottom: 15px;
+  color: #444;
+  background: #fef6ff;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+}

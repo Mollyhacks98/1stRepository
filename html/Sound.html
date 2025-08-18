@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sound</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <header> 
+        <h1> Sound</h1>
+    </header>
+    <main> 
+        <!-- html way to add sound to your page  -->
+         <audio controls> 
+            <source src="alien-spaceship_daniel_simion (1).mp3" type="audio/mpeg">
+         </audio>
+
+         <button onclick="playSound()">Play Sound</button>
+            <script>
+                function playSound() {
+                    const audio = new Audio('alien-spaceship_daniel_simion (1).mp3');
+                    audio.play();
+                }
+            </script>
+            <button onclick="stopSound()">Stop Sound</button>
+            <script>
+                function stopSound() {
+                    const audio = new Audio('alien-spaceship_daniel_simion (1).mp3');
+                    audio.pause();
+                    audio.currentTime = 0; // Reset to the beginning
+                }
+            </script>
+            <button onclick="pauseSound()">Pause Sound</button>
+            <script>
+                function pauseSound() {
+                    const audio = new Audio('alien-spaceship_daniel_simion (1).mp3');
+                    audio.pause();
+                }
+            </script>
+            <p>Click the buttons to play, pause, or stop the sound.</p>
+            
+
+    </main>
+</body>
+</html>
