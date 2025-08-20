@@ -114,11 +114,26 @@
     updateStats();
   }
 
-  // --- Update Stats ---
-  function updateStats() {
-    document.getElementById("heroStats").innerText = `${hero.name} HP: ${hero.hp}`;
-    document.getElementById("enemyStats").innerText = `${enemy.name} HP: ${enemy.hp}`;
-  }
+ function updateStats() {
+  document.getElementById("heroStats").innerText = `${hero.name} HP: ${hero.hp}`;
+  document.getElementById("enemyStats").innerText = `${enemy.name} HP: ${enemy.hp}`;
+
+  // Update HP bars
+  let heroPercent = Math.max((hero.hp / heroMaxHp()) * 100, 0);
+  let enemyPercent = Math.max((enemy.hp / enemy.maxHp) * 100, 0);
+  document.getElementById("heroHpBar").style.width = heroPercent + "%";
+  document.getElementById("enemyHpBar").style.width = enemyPercent + "%";
+}
+
+// Helper to get max HP based on hero type
+function heroMaxHp() {
+  let choice = document.getElementById("heroClass").value;
+  if(choice === "warrior") return 120;
+  if(choice === "mage") return 80;
+  if(choice === "rogue") return 100;
+  return 100;
+}
+
 
   // --- Attack, Heal, Special ---
   function attackEnemy() {
@@ -180,4 +195,11 @@
     document.getElementById("battleLog").innerHTML += `<br>⚔️ A new ${enemy.name} approaches!<br>`;
     updateStats();
   }
+function restartGame() {
+  // reset hero selection and login screen
+  document.getElementById("rpgSection").style.display = "none";
+  document.getElementById("loginSection").style.display = "block";
+  document.getElementById("battleLog").innerHTML = "";
+  document.querySelectorAll("#rpgSection button").forEach(b => b.disabled = false);
+}
 

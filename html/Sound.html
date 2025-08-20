@@ -1,42 +1,45 @@
-<!DOCTYPE html>
-<html lang="en">
+
+<!DOCTYPE html> <!-- Tells the browser this is an HTML5 document -->
+<html lang="en"> <!-- Starts the HTML document and sets language to English -->
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sound</title>
-    <link rel="stylesheet" href="main.css">
+  <meta charset="UTF-8"> <!-- Ensures proper character encoding -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Makes page mobile-friendly -->
+  <title>Sound</title> <!-- Title shown on the browser tab -->
+  <link rel="stylesheet" href="main.css"> <!-- Links an external CSS stylesheet -->
 </head>
 <body>
-    <header> 
-        <h1> Sound</h1>
-    </header>
-    <main> 
-        <!-- html way to add sound to your page  -->
-         <audio controls> 
-            <source src="alien-spaceship_daniel_simion (1).mp3" type="audio/mpeg">
-         </audio>
+  <!-- Page Header -->
+  <header> 
+    <h1>Sound</h1> <!-- Main title of the page -->
+  </header>
 
-         <button onclick="playSound()">Play Sound</button>
-            <script>
-                function playSound() {
-                    const audio = new Audio('alien-spaceship_daniel_simion (1).mp3');
-                    audio.play();
-                }
-            </script>
-            <button onclick="stopSound()">Stop Sound</button>
-            <script>
-                function stopSound() {
-                    const audio = new Audio('alien-spaceship_daniel_simion (1).mp3');
-                    audio.pause();
-                    audio.currentTime = 0; // Reset to the beginning
-                }
-            </script>
-            <button onclick="pauseSound()">Pause Sound</button>
-            <script src = "sound.js"></script> 
-            
-            <p>Click the buttons to play, pause, or stop the sound.</p>
-            
+  <!-- Main content of the page -->
+  <main> 
+    <!-- Built-in HTML audio player with controls -->
+    <audio id="myAudio" controls> <!-- "id" lets JavaScript access this element -->
+      <source src="alien-spaceship_daniel_simion (1).mp3" type="audio/mpeg"> <!-- The actual audio file and its type -->
+      Your browser does not support the audio element. <!-- Fallback text for old browsers -->
+    </audio>
 
-    </main>
+    <br><br> <!-- Adds space between elements -->
+
+    <!-- Custom buttons to control the audio -->
+    <button onclick="playSound()">Play Sound</button> <!-- Button that calls playSound() when clicked -->
+    <button onclick="stopSound()">Stop Sound</button> <!-- Button that calls stopSound() when clicked -->
+    <button onclick="toggleMute()">Mute/Unmute</button> <!-- New button for mute/unmute -->
+
+    <br><br> <!-- Adds space -->
+
+    <!-- Volume slider (range from 0.0 to 1.0) -->
+    <label for="volumeControl">Volume:</label>
+    <input type="range" id="volumeControl" min="0" max="1" step="0.1" value="1" onchange="setVolume(this.value)">
+
+    <!-- Instruction text -->
+    <p>Click the buttons to play, stop, mute, or adjust the volume.</p>
+  </main>
+
+  <!-- JavaScript Section -->
+   <script src=sound.js> </script>
+  
 </body>
 </html>
