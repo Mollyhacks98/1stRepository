@@ -1,53 +1,66 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html> <!-- Declares this document is HTML5 -->
+<html lang="en"> <!-- Starts the HTML document and sets the language to English -->
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login + RPG Demo</title>
-  <link rel="stylesheet" href="minigamestylesheet.css">
+  <meta charset="UTF-8"> <!-- Ensures proper character encoding for text -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Makes the page mobile-friendly (scales correctly) -->
+  <title>Login + RPG Demo</title> <!-- The title that shows on the browser tab -->
+  <link rel="stylesheet" href="minigamestylesheet.css"> <!-- Links an external CSS stylesheet for styling -->
 </head>
 <body>
 
-  <!-- Login Section -->
-  <div id="loginSection" class="section">
-    <h2>Welcome to my MiniGame!!</h2>
-    <p>Jump into this small mini adventure where you battle monsters again and again until you can’t no more!</p>
-    
+  <!-- LOGIN SECTION -->
+  <div id="loginSection" class="section"> <!-- First section: login form (hidden later once game starts) -->
+    <h2>Welcome to my MiniGame!!</h2> <!-- Title for the login screen -->
+    <p>Jump into this small mini adventure where you battle monsters again and again until you can’t no more!</p> <!-- Intro text -->
+
+    <!-- Username input box -->
     <input type="text" id="username" placeholder="Username"><br><br>
+    
+    <!-- Age input box (type=number so only numbers are allowed) -->
     <input type="number" id="age" placeholder="Age"><br><br>
+    
+    <!-- Password input (hides characters when typing) -->
     <input type="password" id="password" placeholder="Password"><br><br>
 
+    <!-- Hero selection dropdown -->
     <label>Choose Your Hero:</label>
-    <select id="heroClass">
-      <option value="warrior">Warrior</option>
-      <option value="mage">Mage</option>
-      <option value="rogue">Rogue</option>
+    <select id="heroClass"> <!-- Dropdown menu for hero choice -->
+      <option value="warrior">Warrior</option> <!-- Warrior choice -->
+      <option value="mage">Mage</option> <!-- Mage choice -->
+      <option value="rogue">Rogue</option> <!-- Rogue choice -->
     </select><br><br>
 
+    <!-- Login button calls the JavaScript function validateLogin() -->
     <button onclick="validateLogin()">Login</button>
+    
+    <!-- Area to display login errors or success messages -->
     <p id="loginMessage"></p>
   </div>
 
-  <!-- RPG Section -->
-  <div id="rpgSection" class="section" style="display:none;">
-    <h2>Welcome, <span id="playerName"></span>!</h2>
-    
+  <!-- RPG GAME SECTION (hidden until login is valid) -->
+  <div id="rpgSection" class="section" style="display:none;"> <!-- Second section: only shows after login -->
+    <h2>Welcome, <span id="playerName"></span>!</h2> <!-- Displays the player’s username -->
+
+    <!-- HERO INFO -->
     <h3>Your Hero</h3>
-    <img id="heroImage" src="" alt="Hero" width="120"><br>
-    <p id="heroStats"></p>
-    
+    <img id="heroImage" src="" alt="Hero" width="120"><br> <!-- Displays the chosen hero image -->
+    <p id="heroStats"></p> <!-- Displays hero stats (HP, attack power, etc.) -->
+
+    <!-- ENEMY INFO -->
     <h3>Enemy</h3>
-    <img id="enemyImage" src="" alt="Enemy" width="120"><br>
-    <p id="enemyStats"></p>
+    <img id="enemyImage" src="" alt="Enemy" width="120"><br> <!-- Displays the enemy image -->
+    <p id="enemyStats"></p> <!-- Displays enemy stats (HP, strength, etc.) -->
 
-    <button onclick="attackEnemy()">Attack</button>
-    <button onclick="healHero()">Heal</button>
-    <button onclick="useSpecial()">Special Move</button>
+    <!-- ACTION BUTTONS -->
+    <button onclick="attackEnemy()">Attack</button> <!-- Runs the attackEnemy() function -->
+    <button onclick="healHero()">Heal</button> <!-- Runs the healHero() function -->
+    <button onclick="useSpecial()">Special Move</button> <!-- Runs the useSpecial() function -->
 
-    <p id="battleLog"></p>
+    <!-- BATTLE LOG -->
+    <p id="battleLog"></p> <!-- Displays text updates for each battle action -->
   </div>
 
-    <script src="minigame.js"></script>
-
+  <!-- JavaScript file that powers the game -->
+  <script src="minigame.js"></script> 
 </body>
 </html>
