@@ -1,20 +1,17 @@
 /*
-declaration block::
-
-selector{
-    property: value;
-    property2: value;
-}
+CSS for CSC102 Page
+Author: Molly Jewett
+Date: 07/13/2025
 */
 
-
+/* Reset margins, padding, and box-sizing */
 * { 
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* background and overall body style */
+/* Body styling */
 body {
     font-family: 'Arial', sans-serif;
     background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
@@ -23,24 +20,13 @@ body {
     flex-direction: column;
     min-height: 100vh;
     text-align: center;
-    margin: 0;
-    padding: 0; 
 }
-/* header */
+
+/* Header styling */
 header {
     padding: 40px 20px;
     background: rgba(0, 0, 0, 0.2);
     backdrop-filter: blur(4px);
-}
-nav a {
-    color: #fff;
-    text-decoration: none;
-    margin: 0 15px;
-    font-size: 1.2rem;
-    transition: color 0.3s ease;
-}
-nav a:hover {
-    color: #ffdf00; 
 }
 
 header h1 { 
@@ -48,17 +34,21 @@ header h1 {
     margin-bottom: 10px;
     text-transform: uppercase;
     letter-spacing: 2px;
-    margin: 0; 
-
-}
-header p {
-    font-size: 1.2em;
-      max-width: 600px;
-      margin: 0 auto;
-      line-height: 1.5;
 }
 
-/* main content */
+nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #ffdf00; 
+}
+
+/* Main content styling */
 main { 
     flex: 1;
     display: flex;
@@ -68,23 +58,16 @@ main {
     padding: 30px; 
 }
 
-main h2 { 
-    font-size: 1.8rem;
-    margin-top: 15px;
-
-}
-
 button { 
     background: #ffdf00;
     color: #333;
     border: none;
-    padding: 12px 24 px;
+    padding: 12px 24px;  /* Fixed spacing typo */
     margin: 10px;
     font-size: 1.2rem;
     border-radius: 8px;
     cursor: pointer;
     transition: background 0.3s ease, transform 0.2s ease;
-
 }
 
 button:hover { 
@@ -92,39 +75,37 @@ button:hover {
     transform: scale(1.05); 
 }
 
-/* footer */
+/* Footer styling */
 footer {
     background: rgba(0, 0, 0, 0.3);
-    padding-bottom: 10px;
     text-align: center;
     font-size: 0.9rem;
-}
-
-footer {
-    margin-right: 200px;
-    text-align: center;
     position: fixed;
     bottom: 0;
     width: 100%;
-    padding-bottom: 10px;
+    padding: 10px 0;
 }
 
+/* Meme image styling */
 #memeimage { 
     width: 200px;
-    /* this will allow our button to move wherever */
-    position: absolute; 
+    position: absolute; /* Needed for movement */
     left: 25%;
-    top: 25%;
+    top: 50%;
+    transform: translateY(-50%);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    border-radius: 12px;
+    transition: left 0.05s linear; /* Smooth horizontal movement */
 }
 
-/* Make it responsive */
+/* Responsive styling for smaller screens */
 @media (max-width: 600px) {
     header h1 {
         font-size: 2rem;
     }
 
-    main img {
+    #memeimage {
         width: 150px;
-        height: 150px;
+        height: auto;
     }
 }

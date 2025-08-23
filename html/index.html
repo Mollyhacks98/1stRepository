@@ -1,69 +1,46 @@
 <!DOCTYPE html>
- <!-- Molly Jewett 07/13/2025 
-<!DOCTYPE html>
-<!-- language -->
+<!-- Molly Jewett 07/13/2025 -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <!-- this part is for mobile devices -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- this title will appear in the browser tab -->
-
-    <!-- add a link to our css file -->
-       <link rel="stylesheet" href="main.css">
-       </head>
-<Body>
+    <title>CSC102 Page</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
     <header>
-        <!-- this is the navigation menu section -->
-
-   
+        <h1>Welcome to my CSC102 Page</h1>
+        <nav>
+            <a href="index.html">Home</a><br>
+            <a href="boards.html">Boards</a><br>
+            <a href="game.html">Game</a><br>
+            <a href="event_practise.html">Practise</a><br>
+            <a href="strings.html">Login</a><br>
+            <a href="palindrome.html">Palindrome</a><br>
+            <a href="Table.html">Table</a><br>
+            <a href="minigame.html">Mini Game</a><br>
+            <a href="sound.html">Sound</a>
+        </nav>
     </header>
 
-<!-- everything we want the viewer to see goes here -->
+    <main>
+        <p>
+            <button id="btnStart" onclick="StartMove()">Start Image Moving</button>
+<button id="btnStop" onclick="StopMove()">Stop Image Moving</button>
 
-    <!-- Create a header section, there should only be one h1 tag -->
+        </p>
+        <p>
+            <img id="memeimage" src="meme.png" alt="meme image">
+        </p>
+    </main>
 
-    <h1>Welcome to my CSC102 Page.</h1>
-    <!--  there will be spacing before and after the P  -->
-      
-     <nav>
-            <!-- the a tag is the anchor tag-it creates a hyperlink -->
-           
-  <a href="index.html">Home</a>
-            <br>
-            <a href="boards.html">Boards</a>
-            <br>
-            <a href="game.html">Game</a>
-            <br>
-            <a href="event_practise.html"> Practise</a> 
-            <br>
-            <a href="strings.html">Login</a>
-            <br>
-            <a href="palindrome.html">Palindrome</a>
-        </nav>
+    <footer>
+        Molly Jewett<br>
+        University of Advancing Technology<br>
+        2625 W Baseline Rd.<br>
+        Tempe, AZ 85283<br>
+    </footer>
 
-       <!-- this is what moves the image around -->
-
-       <button id="btnStart" onclick="StartMove()" >Start Image Moving</button>
-         <button id="btnStop" onclick="StopMove()" >Stop Image Moving</button>
-
-<p>
-<img id="memeimage" src="meme.png" alt="meme image">  
-</p>
-<!-- add footer to the bottom of the page -->
- <footer>
-    <!-- <br> creates a new line -->
-    Molly Jewett<br>
-    University of Advancing Technology<br>
-    2625 W baseline Rd.<br> 
-    Tempe, Az 85283<br> 
-
-
- </footer>
- <!-- make sure the closing body tag is at the bottom of the ppage -->
-
- <!-- Move this Javascript to a seperate page -->
-
- <script src="indexbutton.js"></script>
+    <script src="indexbutton.js"></script>
 </body>
 </html>
